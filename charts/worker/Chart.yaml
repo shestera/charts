@@ -1,0 +1,11 @@
+apiVersion: v2
+name: worker
+version: 0.1.0
+description: A Helm chart for service worker
+type: application
+keywords:
+  - worker
+home: https://github.com/shestera/charts
+maintainers:
+  - name: shestera
+icon: https://helm.sh/img/helm-logo.svg
