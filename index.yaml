@@ -17,4 +17,20 @@ entries:
     urls:
     - https://github.com/shestera/charts/releases/download/nextjs-0.1.0/nextjs-0.1.0.tgz
     version: 0.1.0
+  worker:
+  - apiVersion: v2
+    created: "2020-09-24T14:40:30.01059658Z"
+    description: A Helm chart for service worker
+    digest: 13a5983afa8279242e48d87bda10e1f3d6383474ada548ad5cae32a06f552bb6
+    home: https://github.com/shestera/charts
+    icon: https://helm.sh/img/helm-logo.svg
+    keywords:
+    - worker
+    maintainers:
+    - name: shestera
+    name: worker
+    type: application
+    urls:
+    - https://github.com/shestera/charts/releases/download/worker-0.1.0/worker-0.1.0.tgz
+    version: 0.1.0
 generated: "2020-09-24T00:15:40.894027697Z"
