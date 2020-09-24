@@ -1,0 +1,20 @@
+apiVersion: v1
+entries:
+  nextjs:
+  - apiVersion: v2
+    created: "2020-09-24T00:15:41.018938342Z"
+    description: A Helm chart for Next.JS
+    digest: e3c77a9eab30d67639ca05b517e3fa99cf578f6ec558533359a795db5a1e364e
+    home: https://github.com/shestera/charts
+    icon: https://helm.sh/img/helm-logo.svg
+    keywords:
+    - nodejs
+    - nextjs
+    maintainers:
+    - name: shestera
+    name: nextjs
+    type: application
+    urls:
+    - https://github.com/shestera/charts/releases/download/nextjs-0.1.0/nextjs-0.1.0.tgz
+    version: 0.1.0
+generated: "2020-09-24T00:15:40.894027697Z"
