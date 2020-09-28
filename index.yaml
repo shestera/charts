@@ -33,4 +33,20 @@ entries:
     urls:
     - https://github.com/shestera/charts/releases/download/worker-0.1.0/worker-0.1.0.tgz
     version: 0.1.0
+  workers:
+  - apiVersion: v2
+    created: "2020-09-28T21:33:43.41752968Z"
+    description: A Helm chart for service workers
+    digest: 80ce48d917111926a0fee2344b34f11654b8e022b75bae234c6d2a535e819359
+    home: https://github.com/shestera/charts
+    icon: https://helm.sh/img/helm-logo.svg
+    keywords:
+    - worker
+    maintainers:
+    - name: shestera
+    name: workers
+    type: application
+    urls:
+    - https://github.com/shestera/charts/releases/download/workers-0.1.0/workers-0.1.0.tgz
+    version: 0.1.0
 generated: "2020-09-24T00:15:40.894027697Z"
