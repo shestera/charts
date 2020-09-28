@@ -59,4 +59,4 @@ workers:
   - name: base
     replicaCount: 2
     command: ["/bin/sh"]
-    args: ["-c", "echo hello"]
+    args: ["-c", "'echo hello'"]
