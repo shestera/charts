@@ -58,5 +58,5 @@ affinity: {}
 workers:
   - name: base
     replicaCount: 2
-    command: ["echo"]
-    args: ["hello"]
+    command: ["/bin/sh"]
+    args: ["-c", "while true; do echo hello; sleep 10;done"]
