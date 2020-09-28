@@ -59,4 +59,4 @@ workers:
   - name: base
     replicaCount: 1
     # command: ["/bin/sh"]'
-    args: ["npm", "start"]
+    # args: ["npm", "start"]
