@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 image:
-  repository: alpine
+  repository: nginx
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
@@ -57,6 +57,6 @@ affinity: {}
 
 workers:
   - name: base
-    replicaCount: 2
-    command: ["/bin/sh"]
-    args: ["-c", "while true; do echo hello; sleep 10;done"]
+    replicaCount: 1
+    # command: ["/bin/sh"]'
+    args: ["npm", "start"]
