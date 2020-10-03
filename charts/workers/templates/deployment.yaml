@@ -41,8 +41,14 @@ spec:
             {{- toYaml $.Values.securityContext | nindent 12 }}
           image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag }}"
           imagePullPolicy: {{ $.Values.image.pullPolicy }}
-          command: {{ .command }}
-          args: {{ .args }}
+          {{- with .command }}
+          command: 
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .args }}
+          args: 
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
           {{- if $.Values.secretName }}
           envFrom:
             - secretRef:
