@@ -17,6 +17,22 @@ entries:
     urls:
     - https://github.com/shestera/charts/releases/download/nextjs-0.1.0/nextjs-0.1.0.tgz
     version: 0.1.0
+  nodejs:
+  - apiVersion: v2
+    created: "2020-10-04T23:58:06.386751587Z"
+    description: A Helm chart for NodeJS
+    digest: 640c1a89c8ea0cafc87a8d1619e13f87a6cda79d1abb1ab4e28a66ec0549e652
+    home: https://github.com/shestera/charts
+    icon: https://helm.sh/img/helm-logo.svg
+    keywords:
+    - nodejs
+    maintainers:
+    - name: shestera
+    name: nodejs
+    type: application
+    urls:
+    - https://github.com/shestera/charts/releases/download/nodejs-0.1.0/nodejs-0.1.0.tgz
+    version: 0.1.0
   worker:
   - apiVersion: v2
     created: "2020-09-24T14:40:30.01059658Z"
