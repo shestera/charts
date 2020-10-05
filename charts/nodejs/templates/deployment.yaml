@@ -45,8 +45,24 @@ spec:
 {{/*            httpGet:*/}}
 {{/*              path: /*/}}
 {{/*              port: http*/}}
+          {{- if .Values.secretName }}
+          envFrom:
+            - secretRef:
+                name: {{ .Values.secretName }}
+          {{- if .Values.secretMountPath }}
+          volumeMounts:
+            - name: secret-config-volume
+              mountPath: {{ .Values.secretMountPath }}
+          {{- end }}
+          {{- end }}
           resources:
-            {{- toYaml .Values.resources | nindent 12 }}
+      {{- toYaml .Values.resources | nindent 12 }}
+      {{- if and (.Values.secretName) (.Values.secretMountPath) }}
+      volumes:
+        - name: secret-config-volume
+          secret:
+            secretName: {{ .Values.secretName }}
+      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
