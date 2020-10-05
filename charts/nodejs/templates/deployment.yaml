@@ -27,18 +27,6 @@ spec:
       serviceAccountName: {{ include "nodejs.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
-      {{- if and (.Values.secretName) (.Values.secretMountPath) }}
-      initContainers:
-        - name: artifactory-snapshot
-          image: busybox
-          command: ['/bin/sh', '-c', 'env > /tmp/.env']
-          envFrom:
-            - secretRef:
-                name: {{ .Values.secretName }}
-          volumeMounts:
-            - name: env
-              mountPath: /tmp/.env
-      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -61,19 +49,21 @@ spec:
           envFrom:
             - secretRef:
                 name: {{ .Values.secretName }}
-          {{- if .Values.secretMountPath }}
+          {{- end }}
+          {{- if and (.Values.secretMountPath) (.Values.secretFileName) }}
           volumeMounts:
             - name: env
               mountPath: {{ .Values.secretMountPath }}
               readOnly: true
-          {{- end }}
+              subPath: .env
           {{- end }}
           resources:
       {{- toYaml .Values.resources | nindent 12 }}
-      {{- if and (.Values.secretName) (.Values.secretMountPath) }}
+      {{- if and (.Values.secretMountPath) (.Values.secretFileName) }}
       volumes:
         - name: env
-          emptyDir: {}
+          secret:
+            secretName: {{ .Values.secretFileName }}
       {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
