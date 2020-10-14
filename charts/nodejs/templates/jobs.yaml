@@ -1,0 +1,42 @@
+{{- $labels := include "nodejs.labels" . -}}
+{{- $selectorLabels := include "nodejs.selectorLabels" . -}}
+
+{{- range .Values.jobs }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ template "nodejs.fullname" $ }}-{{ .name }}
+  labels:
+  {{- $labels | nindent 4 }}
+  annotations:
+    # This is what defines this resource as a hook. Without this line, the
+    # job is considered part of the release.
+    "helm.sh/hook": post-install,post-upgrade
+    "helm.sh/hook-weight": "-5"
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  template:
+    metadata:
+      name: {{ template "nodejs.fullname" $ }}-{{ .name }}
+      labels:
+    {{- $labels | nindent 8 }}
+    spec:
+      serviceAccountName: {{ template "nodejs.serviceAccountName" $ }}
+      restartPolicy: Never
+      containers:
+        - name: {{ $.Chart.Name }}-{{ .name }}
+          image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag | default $.Chart.AppVersion }}"
+          imagePullPolicy: {{ $.Values.image.pullPolicy }}
+          {{- with .command }}
+          command:
+          {{- toYaml . | nindent 12 }}
+          {{- end }}
+          envFrom:
+            {{- if $.Values.secretName }}
+            - secretRef:
+                name: {{ $.Values.secretName }}
+            {{- end }}
+            - configMapRef:
+                name: {{ template "nodejs.fullname" $ }}
+---
+{{- end }}
