@@ -31,23 +31,23 @@ spec:
           command:
           {{- toYaml . | nindent 12 }}
           {{- end }}
-          {{- if .Values.secretName }}
+          {{- if $.Values.secretName }}
           envFrom:
             - secretRef:
-                name: {{ .Values.secretName }}
+                name: {{ $.Values.secretName }}
           {{- end }}
-          {{- if and (.Values.secretMountPath) (.Values.secretFileName) }}
+          {{- if and ($.Values.secretMountPath) ($.Values.secretFileName) }}
           volumeMounts:
             - name: env
-              mountPath: {{ .Values.secretMountPath }}
+              mountPath: {{ $.Values.secretMountPath }}
               readOnly: true
               subPath: .env
       {{- end }}
-      {{- if and (.Values.secretMountPath) (.Values.secretFileName) }}
+      {{- if and ($.Values.secretMountPath) ($.Values.secretFileName) }}
       volumes:
         - name: env
           secret:
-            secretName: {{ .Values.secretFileName }}
+            secretName: {{ $.Values.secretFileName }}
   {{- end }}
 ---
 {{- end }}
