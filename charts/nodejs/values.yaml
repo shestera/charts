@@ -40,6 +40,10 @@ service:
   type: ClusterIP
   port: 80
 
+livenessProbe: {}
+
+readinessProbe: {}
+
 ingress:
   enabled: false
   annotations:
