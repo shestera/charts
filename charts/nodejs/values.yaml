@@ -44,6 +44,8 @@ livenessProbe: {}
 
 readinessProbe: {}
 
+startupProbe: {}
+
 ingress:
   enabled: false
   annotations:
