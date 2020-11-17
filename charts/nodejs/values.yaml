@@ -79,3 +79,9 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+workers: []
+#  - name: base
+#    replicaCount: 1
+    # command: ["/bin/sh"]'
+    # args: ["npm", "start"]
