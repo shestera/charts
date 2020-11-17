@@ -54,9 +54,22 @@ spec:
             - secretRef:
                 name: {{ $.Values.secretName }}
           {{- end }}
+          {{- if and ($.Values.secretMountPath) ($.Values.secretFileName) }}
+          volumeMounts:
+            - name: env
+              mountPath: {{ $.Values.secretMountPath }}
+              readOnly: true
+              subPath: .env
+          {{- end }}
           resources:
             {{- toYaml $.Values.resources | nindent 12 }}
       {{- with $.Values.nodeSelector }}
+      {{- if and ($.Values.secretMountPath) ($.Values.secretFileName) }}
+      volumes:
+        - name: env
+          secret:
+            secretName: {{ $.Values.secretFileName }}
+      {{- end }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
