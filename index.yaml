@@ -19,6 +19,21 @@ entries:
     version: 0.1.0
   nodejs:
   - apiVersion: v2
+    created: "2020-11-18T17:54:47.131727219Z"
+    description: A Helm chart for NodeJS
+    digest: 71f11e59ea15844e35019255527dc157ec68942cd1a8ca00a1f572d3203461f5
+    home: https://github.com/shestera/charts
+    icon: https://helm.sh/img/helm-logo.svg
+    keywords:
+    - nodejs
+    maintainers:
+    - name: shestera
+    name: nodejs
+    type: application
+    urls:
+    - https://github.com/shestera/charts/releases/download/nodejs-0.3.2/nodejs-0.3.2.tgz
+    version: 0.3.2
+  - apiVersion: v2
     created: "2020-11-17T21:09:29.037961304Z"
     description: A Helm chart for NodeJS
     digest: 9b4eb46eb4bff34d3b46fafe13663efa9b584fa68c7627d644ba3d419a238fac
